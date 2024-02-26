@@ -1,8 +1,10 @@
 'use client';
 import Image from 'next/image';
 
-import { Label, TextInput, Textarea, Button } from 'flowbite-react';
+import { Label, TextInput, Textarea, Button, Alert } from 'flowbite-react';
 import { HiMail, HiPhone } from 'react-icons/hi';
+
+const endpointURL = process.env.API_URL as string;
 
 export default function Component() {
     // Función para manejar el envío del formulario
@@ -18,7 +20,7 @@ export default function Component() {
 
         // Enviar los datos a tu API
         try {
-            const response = await fetch('http://localhost:3000/api/send', {
+            const response = await fetch(endpointURL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -30,14 +32,23 @@ export default function Component() {
             if (response.ok) {
                 // Manejar la respuesta exitosa aquí, por ejemplo, mostrar un mensaje de éxito
                 const data = await response.json();
-                console.log('Formulario enviado con éxito:', data);
+                <Alert color="success">
+                    <span className="font-medium">Contacto enviado con éxito!</span>
+                </Alert>
             } else {
                 // Manejar errores del servidor aquí
-                console.error('Error al enviar el formulario:', await response.text());
+                // console.error('Error al enviar el formulario:', await response.text());
+                <Alert color="error">
+                    <span className="font-medium">Error al enviar el contacto.</span>
+                </Alert>
             }
         } catch (error) {
             // Manejar errores de conexión aquí
-            console.error('Error al enviar el formulario:', error);
+            // console.error('Error al enviar el formulario:', error);
+            <Alert color="error">
+                <span className="font-medium">Error de conexion, intente mas tarde.</span>
+            </Alert>
+
         }
     };
 
