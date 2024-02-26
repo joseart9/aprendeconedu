@@ -1,6 +1,7 @@
 'use client';
 
 import Banner from "@/components/Banner";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Social from "@/components/Social";
@@ -48,10 +49,9 @@ export default function Home() {
     };
   }, []);
 
-
   return (
-    <main className="flex flex-col h-screen w-screen overflow-auto">
-      <header>
+    <main className="flex flex-col overflow-auto">
+      <header className="h-fit">
         <Navbar reference={activeSection} />
       </header>
       <div className="flex flex-col">
@@ -65,12 +65,10 @@ export default function Home() {
           <Videos />
         </section>
         <section id="contacto" ref={contactoRef}>
-
+          <Contact />
         </section>
       </div>
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </main>
   );
 }
