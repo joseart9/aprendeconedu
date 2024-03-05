@@ -18,6 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta name="google-site-verification" content="He6iCHR_ixvSwfBneFWdlCsoZuCKYxrhQSAwSwZ1Vbg" />
       <body className={poppins.className}>{children}
         <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
         <ToastContainer />
